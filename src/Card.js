@@ -326,14 +326,15 @@ const Card = () => {
     ];
     let shareData = {
       files: filesArray,
-      title: `🎊叮叮噹~你收到了一封信✉️`,
-      text: `🎊叮叮噹~你收到了一封信✉️\n點圖收祝福、看內容❣️\n想動手寫一封信給朋友嗎？！\n立馬點選網址寫信去👇👇👇\nhttps://tpenoccard.com.tw`,
+      title: `貓貓送來祝福`,
+      text: ``,
     };
     let shareDataJustImage = { files: filesArray };
     if (userAgent.isMobile) {
       if (userAgent.isInApp) {
         try {
-          navigator.share(shareData);
+          // navigator.share(shareData);
+          navigator.share(shareDataJustImage);
         } catch (error) {
           alert("inAppWebviewShareError" + error);
         }
@@ -357,7 +358,8 @@ const Card = () => {
         }
       } else {
         try {
-          navigator.share(shareData);
+          // navigator.share(shareData);
+          navigator.share(shareDataJustImage);
         } catch (error) {
           alert("shareError" + error);
         }
@@ -538,16 +540,16 @@ const Card = () => {
     console.log("textAreaCurrentSize", textAreaCurrentSize);
 
     textAreaRef.current.style.fontSize = `${
-      textAreaCurrentSize.height * 0.22
+      textAreaCurrentSize.height * 0.32
     }px`;
     textAreaRef.current.style.lineHeight = `${
-      textAreaCurrentSize.height * 0.32
+      textAreaCurrentSize.height * 0.48
     }px`;
     textAreaPlaceholderRef.current.style.fontSize = `${
-      textAreaCurrentSize.height * 0.22
+      textAreaCurrentSize.height * 0.32
     }px`;
     textAreaPlaceholderRef.current.style.lineHeight = `${
-      textAreaCurrentSize.height * 0.32
+      textAreaCurrentSize.height * 0.48
     }px`;
   };
 
@@ -575,7 +577,7 @@ const Card = () => {
       let acc = 0;
       contentWithCount.forEach((item, index)=>{
         console.log('item.count', item.count);
-        if(acc < 48) {
+        if(acc < 20) {
           acc += item.count;
           tempString.push(item.text);
         }
@@ -597,26 +599,26 @@ const Card = () => {
   const modifySignatureFont = () => {
     let signatureCurrentSize = signatureRef.current.getBoundingClientRect();
     console.log("signatureCurrentSize", signatureCurrentSize);
-    // signatureRef.current.style.fontSize = `${
-    //   signatureCurrentSize.height * 0.6
-    // }px`;
-    // signaturePlaceholderRef.current.style.fontSize = `${
-    //   signatureCurrentSize.height * 0.6
-    // }px`;
-
-
     signatureRef.current.style.fontSize = `${
-      signatureCurrentSize.height * 0.25
-    }px`;
-    signatureRef.current.style.lineHeight = `${
-      signatureCurrentSize.height * 0.35
+      signatureCurrentSize.height * 0.48
     }px`;
     signaturePlaceholderRef.current.style.fontSize = `${
-      signatureCurrentSize.height * 0.25
+      signatureCurrentSize.height * 0.48
     }px`;
-    signaturePlaceholderRef.current.style.lineHeight = `${
-      signatureCurrentSize.height * 0.35
-    }px`;
+
+
+    // signatureRef.current.style.fontSize = `${
+    //   signatureCurrentSize.height * 0.25
+    // }px`;
+    // signatureRef.current.style.lineHeight = `${
+    //   signatureCurrentSize.height * 0.35
+    // }px`;
+    // signaturePlaceholderRef.current.style.fontSize = `${
+    //   signatureCurrentSize.height * 0.25
+    // }px`;
+    // signaturePlaceholderRef.current.style.lineHeight = `${
+    //   signatureCurrentSize.height * 0.35
+    // }px`;
 
 
 
@@ -700,14 +702,14 @@ const Card = () => {
             }`}
             ref={textAreaPlaceholderRef}
           >
-            這裡至多可以輸入30個字哦！選下一步後，點儲存賀卡即可下載！
+            這裡可以輸入30個字！選下一步後，儲存賀卡即可下載！
           </div>
           <textarea
             id={`textArea`}
             className={`${isIPhone ? "iphone_area" : ""}`}
             type="text_area"
             // maxLength="30"
-            rows="3"
+            rows="2"
             spellCheck="false"
             ref={textAreaRef}
             onChange={(e) => handleChangeTextArea(e)}
@@ -724,11 +726,10 @@ const Card = () => {
             `}
             ref={signaturePlaceholderRef}
           >
-            請在這裡輸入送件者大名！<br/>
-            請在這裡輸入送件者大名！
+            請在這裡輸入您的姓名！
           </div>
 
-          <textarea
+          <input
             type="text"
             id={`signatureArea`}
             className={`signature ${
@@ -737,13 +738,12 @@ const Card = () => {
             ref={signatureRef}
             // maxLength={12}
             // size="10"
-            rows="2"
             spellCheck="false"
             onChange={(e) => handleChangeSignature(e)}
             onFocus={() => setSignatureAreaPlaceholderShow(false)}
             // onInput={(e)=> handleSignatureInput(e)}
             autoComplete="off"
-          ></textarea>
+          ></input>
         </div>
       </Fragment>
     );
@@ -807,15 +807,11 @@ const Card = () => {
         ) : (
           <div className="design_frame" ref={designFrameRef}>
             <div className="design_step">
-              {designStep === 1 ? (
-                <div className={`step_row step1`}></div>
-              ) : null}
-              {designStep === 2 ? (
-                <div className={`step_row step2`}></div>
-              ) : null}
-              {designStep === 3 ? (
-                <div className={`step_row step3`}></div>
-              ) : null}
+                  <div className={`step_row ${designStep === 1 ? "step1":""}`}>選擇款式</div>
+                  <div class="arrow_right"></div>
+                  <div className={`step_row ${designStep === 2 ? "step2":""}`}>祝福的話</div>
+                  <div class="arrow_right"></div>
+                  <div className={`step_row ${designStep === 3 ? "step3":""}`}>預覽卡片</div>
             </div>
             {designStep === 1 ? (
               <Swipeable onSwiped={(eventData) => swipeEventHandler(eventData)}>
@@ -834,7 +830,7 @@ const Card = () => {
                           onMouseMove={(e) => handleTigerTooltipShow(e)}
                         >
                           <div id="tooltipTiger">
-                            按住滑鼠左鍵，往左滑可選聖誕賀卡。
+                            按住滑鼠左鍵，往左滑可選虎斑貓賀卡。
                           </div>
                         </div>
                         <div
@@ -843,7 +839,7 @@ const Card = () => {
                           onMouseMove={(e) => handleTreeTooltipShow(e)}
                         >
                           <div id="tooltipTree">
-                            按住滑鼠左鍵，往右滑可選虎年賀卡。
+                            按住滑鼠左鍵，往右滑可選三花貓賀卡。
                           </div>
                         </div>
                       </div>
@@ -888,24 +884,24 @@ const Card = () => {
             </div>
 
             <div className="bottom_button_area">
-              <div className="logo"></div>
+              {/* <div className="logo"></div> */}
               {/* <div className="button_wrap"> */}
               {designStep === 1 ? (
                 <div
                   className="bottom_btn next_btn"
                   onClick={nextStepWithPick}
-                ></div>
+                >下一步</div>
               ) : null}
               {designStep === 2 ? (
                 <Fragment>
                   <div
                     className="bottom_btn previous_btn"
                     onClick={previousStep}
-                  ></div>
+                  >上一步</div>
                   <div
                     className="bottom_btn next_btn"
                     onClick={nextStepWithCheck}
-                  ></div>
+                  >下一步</div>
                 </Fragment>
               ) : null}
               {designStep === 3 ? (
@@ -913,15 +909,15 @@ const Card = () => {
                   <div
                     className="bottom_btn reset_card_btn"
                     onClick={designNewCard}
-                  ></div>
+                  >重新製作</div>
                   <div
                     className="bottom_btn save_btn"
                     onClick={saveThisCard}
-                  ></div>
+                  >儲存賀卡</div>
                   <div
                     className="bottom_btn share_btn"
                     onClick={shareThisCard}
-                  ></div>
+                  >分享</div>
                 </Fragment>
               ) : null}
             </div>
@@ -929,11 +925,11 @@ const Card = () => {
           </div>
         )}
       </div>
-      {downLoadSuccessShow ? (
+      {/* {downLoadSuccessShow ? (
         <div className="card_container_overlay">
           <div className="download_complate"></div>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

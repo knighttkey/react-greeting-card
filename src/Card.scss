@@ -28,7 +28,7 @@
     .download_complate {
       width: 40%;
       height: 40%;
-      background-image: url("./image/Finish.png");
+      // background-image: url("./image/Finish.png");
       background-repeat: no-repeat;
       background-size: contain;
       margin-top: 10%;
@@ -46,7 +46,8 @@
       height: 100vh; /*給 Safari 以外的瀏覽器讀取*/
       height: calc(var(--vh, 1vh) * 100);
       background-size: 200%;
-      background-image: url("./image/background.png");
+      // background-image: url("./image/background.png");
+      background-color: rgba(236, 228, 202, 0.3);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -58,7 +59,8 @@
       // padding-top: 142.1875%;
       // background-repeat: no-repeat;
       background-size: 200%;
-      background-image: url("./image/background.png");
+      // background-image: url("./image/background.png");
+      background-color: rgba(236, 228, 202, 0.3);
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -77,7 +79,7 @@
           height: 38%;
           // margin-top: 35%;
           background-repeat: no-repeat;
-          background-size: 100%;
+          background-size: contain;
           background-image: url("./image/home.png");
           background-position: center;
           transition: 0.3s;
@@ -100,11 +102,18 @@
       // padding: 40px 0 0 0;
       display: flex;
       justify-content: center;
-      margin: 0 0 7% 0;
+      align-items: center;
+      margin: 5% 0 0 0;
+      height: 60px;
       .step_row {
-        width: 100%;
+        width: 32%;
         max-height: 60px;
-        height: 5vh;
+        height: 100%;
+        box-sizing: border-box;
+        margin: 0 5%;
+        font-size: 150%;
+        color: #fff;
+        font-weight: 500;
         background-repeat: no-repeat;
         background-size: 100%;
         transition: 0.3s;
@@ -112,16 +121,32 @@
         -moz-user-select: none;
         -o-user-select: none;
         user-select: none;
-        background-position-y: -1px;
+        background-color: rgb(92, 122, 80);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        // transition: 0.3s;
+
         &.step1 {
-          background-image: url("./image/step1.png");
+          background-color: rgb(176, 230, 155);
+          color: #333;
         }
         &.step2 {
-          background-image: url("./image/step2.png");
+          background-color: rgb(176, 230, 155);
+          color: #333;
         }
         &.step3 {
-          background-image: url("./image/step3.png");
+          background-color: rgb(176, 230, 155);
+          color: #333;
         }
+      }
+      .arrow_right {
+        width: 7%;
+        height: 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("./image/arrow_right.png");
       }
     }
     .card_template_select_area {
@@ -378,8 +403,8 @@
             }
           }
           .textarea_wrap {
-            margin-top: 37.5%;
-            height: 14%;
+            margin-top: 41.5%;
+            height: 8.8%;
             width: 67%;
             position: relative;
             display: flex;
@@ -388,7 +413,7 @@
             .textarea_placeholer {
               // position: absolute;
               width: 100%;
-              height: 60%;
+              height: 100%;
               background-color: transparent;
               // top: 0;
               // left: 0;
@@ -444,7 +469,7 @@
             .signature_placeholer {
               position: absolute;
               width: 60%;
-              height: 100%;
+              height: 50%;
               box-sizing: border-box;
               pointer-events: none;
               transition: 0.3s;
@@ -472,7 +497,7 @@
               background-color: transparent;
               // background-color: rgba(248, 221, 196, 0.5);
               width: 60%;
-              height: 100%;
+              height: 50%;
               // background-color: rgba($color: #000000, $alpha: 0.3);
               box-sizing: border-box;
               font-weight: 600;
@@ -513,64 +538,39 @@
         height: 40px;
         background-repeat: no-repeat;
         background-size: contain;
-        background-image: url("./image/logo.png");
+        // background-image: url("./image/logo.png");
         background-position: center center;
         margin: 0 20px 0 0;
       }
       .bottom_btn {
         height: 40px;
-        width: 30%;
+        width: 20%;
         // min-width: 100px;
         // border-radius: 30px;
         display: flex;
         justify-content: center;
-        line-height: 40px;
+        align-items: center;
+        line-height: 100%;
         box-sizing: border-box;
         // border: 2px solid #000;
-        font-size: 100%;
+        font-size: 150%;
         -webkit-user-select: none;
         -moz-user-select: none;
         -o-user-select: none;
         user-select: none;
         transition: 0.3s;
         color: #fff;
-        line-height: 50px;
+        // line-height: 30px;
         cursor: pointer;
         margin: 0 10px;
+        border-radius: 50px;
         background-repeat: no-repeat;
         background-size: contain;
-
+        background-color: rgb(92, 122, 80);
         background-position: center;
         // transition: 0.3s;
-      }
-      .reset_card_btn {
-        background-image: url("./image/again2.png");
         &:hover {
-          background-image: url("./image/again1.png");
-        }
-      }
-      .next_btn {
-        background-image: url("./image/next2.png");
-        &:hover {
-          background-image: url("./image/next1.png");
-        }
-      }
-      .previous_btn {
-        background-image: url("./image/previous2.png");
-        &:hover {
-          background-image: url("./image/previous1.png");
-        }
-      }
-      .save_btn {
-        background-image: url("./image/save2.png");
-        &:hover {
-          background-image: url("./image/save1.png");
-        }
-      }
-      .share_btn {
-        background-image: url("./image/sand2.png");
-        &:hover {
-          background-image: url("./image/sand1.png");
+          background-color: rgb(128, 175, 109);
         }
       }
     }
