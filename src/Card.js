@@ -808,9 +808,9 @@ const Card = () => {
           <div className="design_frame" ref={designFrameRef}>
             <div className="design_step">
                   <div className={`step_row ${designStep === 1 ? "step1":""}`}>選擇款式</div>
-                  <div class="arrow_right"></div>
+                  <div className="arrow_right"></div>
                   <div className={`step_row ${designStep === 2 ? "step2":""}`}>祝福的話</div>
-                  <div class="arrow_right"></div>
+                  <div className="arrow_right"></div>
                   <div className={`step_row ${designStep === 3 ? "step3":""}`}>預覽卡片</div>
             </div>
             {designStep === 1 ? (
